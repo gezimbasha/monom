@@ -1,6 +1,7 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
+#include <stdarg.h>
 #include <iostream>
 #include <math.h>
 using namespace std;
@@ -13,6 +14,10 @@ private:
 public:
 	Matrix(void);
 	~Matrix();
+	
+	T coeff(unsigned int i, unsigned int j) const;
+
+	// Friend operators
 };
 
 //////////////////////////////////////////////////
@@ -31,4 +36,12 @@ Matrix<T,M,N>::~Matrix()
 {
 }
 
+///////////////////////////////////////////////////
+// Accessors
+//////////////////////////////////////////////////
+template<class T, unsigned int M, unsigned int N>
+T Matrix<T,N,M>::coeff(unsigned int i, unsigned int j) const
+{
+	return x[i][j];
+}
 #endif
